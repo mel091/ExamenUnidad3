@@ -30,8 +30,11 @@ import javax.swing.JTextArea;
 
 import java.awt.GridLayout;
 import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.FlowLayout;
+
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 
@@ -49,7 +52,6 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 	private JTextField textField_6;
 	private JTextField textField_7;
 	private JTextField textField_8;
-	private JTextField textField_9;
 	private JTextField textField_10;
 	private JTextField textField_11;
 	private JTextField textField_12;
@@ -68,6 +70,7 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 	private JTextField textField_25;
 	private JTextField textField_26;
 	private JTextField textField_27;
+	private JTextField textField_28;
 
 	/**
 	 * Launch the application.
@@ -90,9 +93,9 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 	 */
 	public ControlEscolar1() 
 	{
-		//this.entry(this);
-		this.login(this);
-		//this.eliminarAlumno(this);
+		this.entry(this);
+		//this.login(this);
+		//this.crearDocente(this);
 		//this.inicio(this);
 		//addKeyListener(this);
 	}
@@ -109,57 +112,91 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(0, 128, 192));
+		panel.setBackground(Color.decode("#F0E4F3"));
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("School Smart Zone");
-		lblNewLabel.setBounds(0, 0, 974, 45);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 37));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		panel.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("Sistema de Control escolar");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(400, 91, 200, 14);
-		panel.add(lblNewLabel_1);
+		JLabel logo = new JLabel();
+		logo.setIcon(new ImageIcon(getClass().getResource("logo1.png")));
+		logo.setBounds(320, 5, 350, 200);
+		panel.add(logo);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(0, 64, 128));
-		panel_1.setBounds(100, 180, 770, 400);
+		panel_1.setBackground(Color.decode("#725B75"));
+		panel_1.setBounds(100, 200, 770, 400);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblNewLabel_2 = new JLabel("Ingresa tu rol");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_2.setBounds(340, 30, 120, 25);
+		JLabel lblNewLabel_2 = new JLabel("Selecciona tu rol");
+		lblNewLabel_2.setFont(new Font("Trebuchet MS", Font.PLAIN, 19));
+		lblNewLabel_2.setForeground(Color.white);
+		lblNewLabel_2.setBounds(325, 40, 180, 25);
 		panel_1.add(lblNewLabel_2);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.decode("#F8F1FA"));
 		panel_2.setBounds(120, 110, 200, 200);
 		panel_1.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel estudiante = new JLabel();
+		estudiante.setIcon(new ImageIcon(getClass().getResource("estudiante1.png")));
+		estudiante.setBounds(0, 0, 200, 200);
+		panel_2.add(estudiante);
 		
 		JPanel panel_2_1 = new JPanel();
+		panel_2_1.setBackground(Color.decode("#F8F1FA"));
 		panel_2_1.setBounds(454, 110, 200, 200);
 		panel_1.add(panel_2_1);
+		panel_2_1.setLayout(null);
 		
-		JLabel lblNewLabel_2_1 = new JLabel("Alumno");
-		lblNewLabel_2_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_2_1.setBounds(159, 321, 120, 25);
-		panel_1.add(lblNewLabel_2_1);
+		JLabel docente = new JLabel();
+		docente.setIcon(new ImageIcon(getClass().getResource("maestro.png")));
+		docente.setBounds(0, 0, 200, 200);
+		panel_2_1.add(docente);
 		
-		JLabel lblNewLabel_2_1_1 = new JLabel("Docente");
-		lblNewLabel_2_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2_1_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_2_1_1.setBounds(496, 321, 120, 25);
-		panel_1.add(lblNewLabel_2_1_1);
+		JButton alumno = new JButton("Alumno");
+		alumno.addActionListener(new ActionListener() 
+		{	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.remove(panel);
+				
+				login(frame);
+				
+				frame.repaint();
+				frame.revalidate();
+				
+			}
+		});
+		alumno.setBounds(159, 321, 120, 25);
+		alumno.setForeground(new Color(255, 255, 255));
+		alumno.setFont(new Font("Trebuchet MS", Font.PLAIN, 17));
+		alumno.setBackground(Color.decode("#725B75"));
+		alumno.setBorderPainted(true); 
+		alumno.setBorder(BorderFactory.createLineBorder(Color.white, 1));
+		panel_1.add(alumno);
+		
+		JButton docente1 = new JButton("Docente");
+		docente1.addActionListener(new ActionListener() 
+		{	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Opción no disponible");
+			}
+		});
+		docente1.setBounds(496, 321, 120, 25);
+		docente1.setForeground(new Color(255, 255, 255));
+		docente1.setFont(new Font("Trebuchet MS", Font.PLAIN, 17));
+		docente1.setBackground(Color.decode("#725B75"));
+		docente1.setBorderPainted(true); 
+		docente1.setBorder(BorderFactory.createLineBorder(Color.white, 1));
+		panel_1.add(docente1);
 	}
 	
 	public void login(JFrame frame)
 	{
-		this.setTitle("School Smart Zone - Login");
+		this.setTitle("Neobyte - Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(180, 20, 1000, 700);
 		contentPane = new JPanel();
@@ -170,13 +207,14 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel_3 = new JLabel("Bienvenido");
+		lblNewLabel_3.setForeground(new Color(255, 255, 255));
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_3.setBounds(440, 150, 120, 14);
+		lblNewLabel_3.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 33));
+		lblNewLabel_3.setBounds(250, 150, 200, 30);
 		contentPane.add(lblNewLabel_3);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(0, 64, 128));
+		panel.setBackground(Color.decode("#BAA1C2"));
 		panel.setBounds(230, 190, 550, 300);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -187,6 +225,8 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Acceder");
+		btnNewButton.setBackground(new Color(255, 255, 255));
+		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
 		btnNewButton.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
@@ -208,73 +248,129 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		passwordField.setBounds(70, 147, 400, 40);
 		panel.add(passwordField);
 		
-		JLabel lblNewLabel_5 = new JLabel("email o nombre de usuario");
-		lblNewLabel_5.setBounds(70, 55, 150, 14);
+		JLabel lblNewLabel_5 = new JLabel("Correo electrónico educativo");
+		lblNewLabel_5.setBounds(70, 55, 200, 14);
 		panel.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_5_1 = new JLabel("Contraseña");
-		lblNewLabel_5_1.setBounds(70, 135, 150, 14);
+		lblNewLabel_5_1.setBounds(70, 132, 150, 14);
 		panel.add(lblNewLabel_5_1);
 		
 		JLabel lblNewLabel_4 = new JLabel("Olvidé mi contraseña");
+		lblNewLabel_4.setForeground(new Color(255, 255, 255));
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_4.setBounds(440, 501, 140, 14);
+		lblNewLabel_4.setBounds(445, 501, 140, 14);
 		contentPane.add(lblNewLabel_4);
+		
+		JLabel fondo = new JLabel();
+		fondo.setIcon(new ImageIcon(getClass().getResource("fondo.png")));
+		fondo.setBounds(0, 0, 1000, 700);
+		contentPane.add(fondo);
 	
 	}
 	
 	public void inicio(JFrame frame)
 	{
-		this.setTitle("School Smart Zone - inicio");
+		this.setTitle("NeoByte - Página de inicio");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(180, 20, 1000, 700);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(0, 64, 128));
+		contentPane.setBackground(Color.decode("#6A4E90"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(10, 11, 960, 60);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
+		JLabel fondo = new JLabel();
+		fondo.setIcon(new ImageIcon(getClass().getResource("logoControl.png")));
+		fondo.setBounds(0, 5, 150, 60);
+		panel.add(fondo);
 		
 		JLabel lblNewLabel_7 = new JLabel("Grupos");
-		lblNewLabel_7.setBounds(200, 20, 50, 14);
+		lblNewLabel_7.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 11));
+		lblNewLabel_7.setBounds(200, 25, 50, 14);
 		panel.add(lblNewLabel_7);
 		
+		JLabel f = new JLabel();
+		f.setIcon(new ImageIcon(getClass().getResource("f.png")));
+		f.setBounds(250, 22, 15, 20);
+		panel.add(f);
+		
 		JLabel lblNewLabel_6 = new JLabel("Materias");
-		lblNewLabel_6.setBounds(330, 20, 70, 15);
+		lblNewLabel_6.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 11));
+		lblNewLabel_6.setBounds(320, 25, 50, 15);
 		panel.add(lblNewLabel_6);
 		
+		JLabel f1 = new JLabel();
+		f1.setIcon(new ImageIcon(getClass().getResource("f.png")));
+		f1.setBounds(380, 22, 15, 20);
+		panel.add(f1);
+		
 		JLabel lblNewLabel_8 = new JLabel("Calificaciones");
-		lblNewLabel_8.setBounds(450, 20, 90, 14);
+		lblNewLabel_8.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 11));
+		lblNewLabel_8.setBounds(450, 25, 90, 14);
 		panel.add(lblNewLabel_8);
 		
+		JLabel f2 = new JLabel();
+		f2.setIcon(new ImageIcon(getClass().getResource("f.png")));
+		f2.setBounds(540, 22, 15, 20);
+		panel.add(f2);
+		
 		JLabel lblNewLabel_9 = new JLabel("Horarios");
-		lblNewLabel_9.setBounds(600, 20, 60, 14);
+		lblNewLabel_9.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 11));
+		lblNewLabel_9.setBounds(610, 25, 60, 14);
 		panel.add(lblNewLabel_9);
 		
+		JLabel f3 = new JLabel();
+		f3.setIcon(new ImageIcon(getClass().getResource("f.png")));
+		f3.setBounds(670, 22, 15, 20);
+		panel.add(f3);
+		
 		JLabel lblNewLabel_10 = new JLabel("Usuarios");
-		lblNewLabel_10.setBounds(730, 20, 70, 14);
+		lblNewLabel_10.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 11));
+		lblNewLabel_10.setBounds(730, 25, 70, 14);
 		panel.add(lblNewLabel_10);
 		
-		JLabel lblNewLabel_12 = new JLabel("Cerrar sesión");
-		lblNewLabel_12.setBounds(850, 20, 70, 14);
-		panel.add(lblNewLabel_12);
+		JLabel f4 = new JLabel();
+		f4.setIcon(new ImageIcon(getClass().getResource("f.png")));
+		f4.setBounds(790, 22, 15, 20);
+		panel.add(f4);
 		
-		JLabel lblNewLabel_13 = new JLabel("School Smart Zone");
-		lblNewLabel_13.setBounds(25, 11, 100, 14);
-		panel.add(lblNewLabel_13);
+		JButton close = new JButton("Cerrar sesión");
+		close.addActionListener(new ActionListener() 
+		{	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.remove(panel);
+				
+				entry(frame);
+				
+				frame.repaint();
+				frame.revalidate();
+				
+			}
+		});
+		close.setBounds(850, 22, 90, 20);
+		close.setForeground(new Color(0, 0, 0));
+		close.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 11));
+		close.setBackground(Color.white);
+		close.setBorderPainted(true); 
+		close.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
+		panel.add(close);
 		
-		JLabel lblNewLabel_13_1 = new JLabel("Control escolar");
-		lblNewLabel_13_1.setBounds(35, 36, 80, 14);
-		panel.add(lblNewLabel_13_1);
+		JLabel f_1 = new JLabel();
+		f_1.setBounds(374, 25, 15, 20);
+		panel.add(f_1);
 		
 		JLabel lblNewLabel_11 = new JLabel("Inicio");
-		lblNewLabel_11.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		lblNewLabel_11.setForeground(new Color(255, 255, 255));
+		lblNewLabel_11.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 29));
 		lblNewLabel_11.setBounds(450, 108, 100, 25);
 		contentPane.add(lblNewLabel_11);
 		
@@ -287,43 +383,102 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		JPanel panel_12 = new JPanel();
 		panel_12.setBackground(new Color(0, 0, 128));
 		panel_1.add(panel_12);
+		panel_12.setLayout(null);
 		
+		JLabel school = new JLabel();
+		school.setBounds(0, 0, 165, 215);
+		school.setIcon(new ImageIcon(getClass().getResource("Escuela.png")));
+		panel_12.add(school);
+	
 		JPanel panel_11 = new JPanel();
 		panel_11.setBackground(new Color(255, 0, 255));
 		panel_1.add(panel_11);
+		panel_11.setLayout(null);
+		
+		JLabel tuto = new JLabel();
+		tuto.setBounds(0, 0, 165, 215);
+		tuto.setIcon(new ImageIcon(getClass().getResource("tuto1.png")));
+		panel_11.add(tuto);
 		
 		JPanel panel_10 = new JPanel();
 		panel_10.setBackground(new Color(192, 192, 192));
 		panel_1.add(panel_10);
+		panel_10.setLayout(null);
+		
+		JLabel cal = new JLabel();
+		cal.setBounds(0, 0, 165, 215);
+		cal.setIcon(new ImageIcon(getClass().getResource("cal.png")));
+		panel_10.add(cal);
 		
 		JPanel panel_9 = new JPanel();
 		panel_9.setBackground(new Color(128, 0, 128));
 		panel_1.add(panel_9);
+		panel_9.setLayout(null);
+		
+		JLabel admi = new JLabel();
+		admi.setBounds(0, 0, 165, 215);
+		admi.setIcon(new ImageIcon(getClass().getResource("admin.png")));
+		panel_9.add(admi);
 		
 		JPanel panel_8 = new JPanel();
 		panel_8.setBackground(new Color(64, 0, 0));
 		panel_1.add(panel_8);
+		panel_8.setLayout(null);
+		
+		JLabel act = new JLabel();
+		act.setBounds(0, 0, 165, 215);
+		act.setIcon(new ImageIcon(getClass().getResource("act.png")));
+		panel_8.add(act);
 		
 		JPanel panel_7 = new JPanel();
 		panel_7.setBackground(new Color(0, 128, 0));
 		panel_1.add(panel_7);
+		panel_7.setLayout(null);
+		
+		JLabel padres = new JLabel();
+		padres.setBounds(0, 0, 165, 215);
+		padres.setIcon(new ImageIcon(getClass().getResource("padres.png")));
+		panel_7.add(padres);
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBackground(new Color(128, 64, 64));
 		panel_1.add(panel_6);
+		panel_6.setLayout(null);
+		
+		JLabel aviso = new JLabel();
+		aviso.setBounds(0, 0, 165, 215);
+		aviso.setIcon(new ImageIcon(getClass().getResource("avisos.png")));
+		panel_6.add(aviso);
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setBackground(new Color(0, 255, 255));
 		panel_1.add(panel_5);
+		panel_5.setLayout(null);
+		
+		JLabel servicio = new JLabel();
+		servicio.setBounds(0, 0, 165, 215);
+		servicio.setIcon(new ImageIcon(getClass().getResource("servicio.png")));
+		panel_5.add(servicio);
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(new Color(255, 128, 128));
 		panel_1.add(panel_4);
+		panel_4.setLayout(null);
+		
+		JLabel materias = new JLabel();
+		materias.setBounds(0, 0, 165, 215);
+		materias.setIcon(new ImageIcon(getClass().getResource("materias.png")));
+		panel_4.add(materias);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(0, 64, 0));
 		panel_1.add(panel_3);
-
+		panel_3.setLayout(null);
+		
+		JLabel egreso = new JLabel();
+		egreso.setBounds(0, 0, 165, 215);
+		egreso.setIcon(new ImageIcon(getClass().getResource("egreso.png")));
+		panel_3.add(egreso);
 		
 		JMenuBar barra = new JMenuBar(); //se puede colocar mas menús, constructor vacío
 		JMenu menuFile = new JMenu("Alumnos");
@@ -488,27 +643,30 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		barra.add(menuFile2);
 		
 		this.setJMenuBar(barra);
+		
+		
 	}
 	
 	public void descargarAlumno(JFrame frame)
 	{
-		this.setTitle("School Smart Zone - inicio");
+		this.setTitle("NeoByte - Descargar información del alumno");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(180, 20, 1000, 700);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(0, 64, 128));
+		contentPane.setBackground(Color.decode("#725b75"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel_16 = new JLabel("Descargar información del alumno");
-		lblNewLabel_16.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		lblNewLabel_16.setBounds(341, 32, 300, 25);
+		JLabel lblNewLabel_16 = new JLabel("Información del alumno");
+		lblNewLabel_16.setForeground(new Color(255, 255, 255));
+		lblNewLabel_16.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
+		lblNewLabel_16.setBounds(370, 45, 500, 25);
 		contentPane.add(lblNewLabel_16);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
+		panel.setBackground(Color.decode("#E3DEE9"));
 		panel.setBounds(65, 97, 850, 500);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -517,29 +675,19 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		panel_1.setBackground(new Color(128, 128, 128));
 		panel_1.setBounds(635, 45, 170, 220);
 		panel.add(panel_1);
+		panel_1.setLayout(null);
+		
+		JLabel alumnoID = new JLabel();
+		alumnoID.setBounds(0, 0, 170, 220);
+		alumnoID.setIcon(new ImageIcon(getClass().getResource("alumnoID.png")));
+		panel_1.add(alumnoID);
 		
 		JLabel lblNewLabel_17 = new JLabel("Nombre completo:");
-		lblNewLabel_17.setBounds(46, 58, 100, 14);
+		lblNewLabel_17.setBounds(46, 58, 120, 14);
 		panel.add(lblNewLabel_17);
 		
-		textField_9 = new JTextField();
-		textField_9.addKeyListener(new KeyAdapter()
-		{
-			public void keyTyped(KeyEvent e) //validar q solo ingrese numeros
-			{
-				char character = e.getKeyChar();
-				if(!Character.isDigit(character))
-				{
-					e.consume();
-				}
-			}
-		});
-		textField_9.setBounds(204, 55, 370, 20);
-		panel.add(textField_9);
-		textField_9.setColumns(10);
-		
 		JLabel lblNewLabel_17_1 = new JLabel("Fecha de nacimiento:");
-		lblNewLabel_17_1.setBounds(46, 96, 100, 14);
+		lblNewLabel_17_1.setBounds(46, 96, 150, 14);
 		panel.add(lblNewLabel_17_1);
 		
 		JLabel lblNewLabel_17_2 = new JLabel("CURP:");
@@ -551,11 +699,11 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		panel.add(lblNewLabel_17_3);
 		
 		JLabel lblNewLabel_17_4 = new JLabel("Número de teléfono:");
-		lblNewLabel_17_4.setBounds(46, 206, 100, 14);
+		lblNewLabel_17_4.setBounds(46, 206, 150, 14);
 		panel.add(lblNewLabel_17_4);
 		
 		JLabel lblNewLabel_17_5 = new JLabel("Correo electrónico:");
-		lblNewLabel_17_5.setBounds(46, 243, 100, 14);
+		lblNewLabel_17_5.setBounds(46, 243, 150, 14);
 		panel.add(lblNewLabel_17_5);
 		
 		JLabel lblNewLabel_17_6 = new JLabel("Carrera:");
@@ -566,16 +714,16 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		lblNewLabel_17_7.setBounds(46, 322, 100, 14);
 		panel.add(lblNewLabel_17_7);
 		
-		JLabel lblNewLabel_17_8 = new JLabel("Información de contacto");
-		lblNewLabel_17_8.setBounds(46, 370, 100, 14);
+		JLabel lblNewLabel_17_8 = new JLabel("Información de contacto de emergencia");
+		lblNewLabel_17_8.setBounds(46, 370, 250, 14);
 		panel.add(lblNewLabel_17_8);
 		
-		JLabel lblNewLabel_17_9 = new JLabel("Nombre del tutor:");
-		lblNewLabel_17_9.setBounds(46, 410, 100, 14);
+		JLabel lblNewLabel_17_9 = new JLabel("Nombre del tutor:      Laura Cervantes");
+		lblNewLabel_17_9.setBounds(46, 410, 300, 14);
 		panel.add(lblNewLabel_17_9);
 		
-		JLabel lblNewLabel_17_10 = new JLabel("Teléfono:");
-		lblNewLabel_17_10.setBounds(367, 410, 100, 14);
+		JLabel lblNewLabel_17_10 = new JLabel("Teléfono:      (555) 987-6543");
+		lblNewLabel_17_10.setBounds(367, 410, 200, 14);
 		panel.add(lblNewLabel_17_10);
 		
 		JButton btnNewButton_6 = new JButton("Descargar información");
@@ -608,24 +756,67 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(20, 359, 800, 85);
-		panel.add(panel_2);	
+		panel.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel lblNewLabel_17_10_1 = new JLabel("Relación:      Madre");
+		lblNewLabel_17_10_1.setBounds(600, 50, 200, 14);
+		panel_2.add(lblNewLabel_17_10_1);
+		
+		JLabel lblNewLabel_17_11 = new JLabel("Alejandro Cázares Ochoa");
+		lblNewLabel_17_11.setBounds(206, 58, 150, 14);
+		panel.add(lblNewLabel_17_11);
+		
+		JLabel lblNewLabel_17_11_1 = new JLabel("20 de abril 2002\r\n");
+		lblNewLabel_17_11_1.setBounds(206, 96, 120, 14);
+		panel.add(lblNewLabel_17_11_1);
+		
+		JLabel lblNewLabel_17_11_1_1 = new JLabel("CAOA800101HDFZLRLA2");
+		lblNewLabel_17_11_1_1.setBounds(206, 133, 150, 14);
+		panel.add(lblNewLabel_17_11_1_1);
+		
+		JLabel lblNewLabel_17_11_1_1_1 = new JLabel("Calle Robes #453, Colonia El Sol CDMX");
+		lblNewLabel_17_11_1_1_1.setBounds(206, 168, 250, 14);
+		panel.add(lblNewLabel_17_11_1_1_1);
+		
+		JLabel lblNewLabel_17_11_1_1_2 = new JLabel("(555) 123-4567");
+		lblNewLabel_17_11_1_1_2.setBounds(206, 206, 150, 14);
+		panel.add(lblNewLabel_17_11_1_1_2);
+		
+		JLabel lblNewLabel_17_11_1_1_2_1 = new JLabel("alejandroCerv20@gmail.com");
+		lblNewLabel_17_11_1_1_2_1.setBounds(206, 243, 170, 14);
+		panel.add(lblNewLabel_17_11_1_1_2_1);
+		
+		JLabel lblNewLabel_17_11_1_1_2_2 = new JLabel("Ingeniería en Desarrollo de Software");
+		lblNewLabel_17_11_1_1_2_2.setBounds(206, 282, 210, 14);
+		panel.add(lblNewLabel_17_11_1_1_2_2);
+		
+		JLabel lblNewLabel_17_11_1_1_2_3 = new JLabel("7mo");
+		lblNewLabel_17_11_1_1_2_3.setBounds(206, 322, 150, 14);
+		panel.add(lblNewLabel_17_11_1_1_2_3);
+		
+		JLabel lblNewLabel_17_11_1_1_2_3_1 = new JLabel("ID: 987654321");
+		lblNewLabel_17_11_1_1_2_3_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_17_11_1_1_2_3_1.setBounds(645, 275, 150, 14);
+		panel.add(lblNewLabel_17_11_1_1_2_3_1);
 	}
 	
 	public void descargarDocente(JFrame frame)
 	{
-		this.setTitle("School Smart Zone - inicio");
+		this.setTitle("NeoByte - Descargar información del docente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(180, 20, 1000, 700);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(0, 64, 128));
+		contentPane.setBackground(Color.decode("#322030"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel_16 = new JLabel("Descargar información del docente");
-		lblNewLabel_16.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		lblNewLabel_16.setBounds(341, 32, 300, 25);
+		JLabel lblNewLabel_16 = new JLabel("Información del docente");
+		lblNewLabel_16.setForeground(new Color(255, 255, 255));
+		lblNewLabel_16.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
+		lblNewLabel_16.setBounds(370, 45, 500, 25);
 		contentPane.add(lblNewLabel_16);
 		
 		JPanel panel = new JPanel();
@@ -638,34 +829,35 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		panel_1.setBackground(new Color(128, 128, 128));
 		panel_1.setBounds(635, 45, 170, 220);
 		panel.add(panel_1);
+		panel_1.setLayout(null);
 		
-		JLabel lblNewLabel_17 = new JLabel("Nombre completo:");
-		lblNewLabel_17.setBounds(46, 58, 100, 14);
+		JLabel maestroID = new JLabel();
+		maestroID.setBounds(0, 0, 170, 220);
+		maestroID.setIcon(new ImageIcon(getClass().getResource("maestro1.png")));
+		panel_1.add(maestroID);
+		
+		JLabel lblNewLabel_17 = new JLabel("Nombre completo:                          Simón Gómez Talamante");
+		lblNewLabel_17.setBounds(46, 58, 350, 14);
 		panel.add(lblNewLabel_17);
 		
-		textField_9 = new JTextField();
-		textField_9.setBounds(204, 55, 370, 20);
-		panel.add(textField_9);
-		textField_9.setColumns(10);
-		
-		JLabel lblNewLabel_17_1 = new JLabel("Fecha de nacimiento:");
-		lblNewLabel_17_1.setBounds(46, 96, 100, 14);
+		JLabel lblNewLabel_17_1 = new JLabel("Fecha de nacimiento:                     7 de octubre 1986");
+		lblNewLabel_17_1.setBounds(46, 96, 350, 14);
 		panel.add(lblNewLabel_17_1);
 		
-		JLabel lblNewLabel_17_2 = new JLabel("CURP:");
-		lblNewLabel_17_2.setBounds(46, 133, 100, 14);
+		JLabel lblNewLabel_17_2 = new JLabel("CURP:                                                 GOTS900315HDFMZMSA8");
+		lblNewLabel_17_2.setBounds(46, 133, 350, 14);
 		panel.add(lblNewLabel_17_2);
 		
-		JLabel lblNewLabel_17_3 = new JLabel("Dirección:");
-		lblNewLabel_17_3.setBounds(46, 168, 100, 14);
+		JLabel lblNewLabel_17_3 = new JLabel("Dirección:                                          Calle del Bosque #612, Colonia La Ilusión 73791");
+		lblNewLabel_17_3.setBounds(46, 168, 530, 14);
 		panel.add(lblNewLabel_17_3);
 		
 		JLabel lblNewLabel_17_4 = new JLabel("Número de teléfono:");
-		lblNewLabel_17_4.setBounds(46, 206, 100, 14);
+		lblNewLabel_17_4.setBounds(46, 206, 120, 14);
 		panel.add(lblNewLabel_17_4);
 		
 		JLabel lblNewLabel_17_5 = new JLabel("Correo electrónico:");
-		lblNewLabel_17_5.setBounds(46, 243, 100, 14);
+		lblNewLabel_17_5.setBounds(46, 243, 150, 14);
 		panel.add(lblNewLabel_17_5);
 		
 		JLabel lblNewLabel_17_6 = new JLabel("Ocupación:");
@@ -673,19 +865,19 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		panel.add(lblNewLabel_17_6);
 		
 		JLabel lblNewLabel_17_7 = new JLabel("Materias impartidas:");
-		lblNewLabel_17_7.setBounds(46, 322, 100, 14);
+		lblNewLabel_17_7.setBounds(46, 322, 150, 14);
 		panel.add(lblNewLabel_17_7);
 		
 		JLabel lblNewLabel_17_8 = new JLabel("Información académica");
-		lblNewLabel_17_8.setBounds(46, 370, 100, 14);
+		lblNewLabel_17_8.setBounds(46, 370, 250, 14);
 		panel.add(lblNewLabel_17_8);
 		
-		JLabel lblNewLabel_17_9 = new JLabel("Estudios:");
-		lblNewLabel_17_9.setBounds(46, 410, 100, 14);
+		JLabel lblNewLabel_17_9 = new JLabel("Estudios:       Instituto Tecnológico del Norte");
+		lblNewLabel_17_9.setBounds(46, 410, 260, 14);
 		panel.add(lblNewLabel_17_9);
 		
-		JLabel lblNewLabel_17_10 = new JLabel("Carrera cursada:");
-		lblNewLabel_17_10.setBounds(367, 410, 100, 14);
+		JLabel lblNewLabel_17_10 = new JLabel("Carrera cursada:        Ingeniería en Sistemas");
+		lblNewLabel_17_10.setBounds(367, 410, 260, 14);
 		panel.add(lblNewLabel_17_10);
 		
 		JButton btnNewButton_6 = new JButton("Descargar información");
@@ -720,6 +912,26 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(20, 359, 800, 85);
 		panel.add(panel_2);	
+		
+		JLabel lblNewLabel_17_4_1 = new JLabel("(555) 555-5555");
+		lblNewLabel_17_4_1.setBounds(227, 206, 100, 14);
+		panel.add(lblNewLabel_17_4_1);
+		
+		JLabel lblNewLabel_17_5_1 = new JLabel("smnGomez@gmail.com");
+		lblNewLabel_17_5_1.setBounds(227, 243, 200, 14);
+		panel.add(lblNewLabel_17_5_1);
+		
+		JLabel lblNewLabel_17_5_1_1 = new JLabel("Profesor");
+		lblNewLabel_17_5_1_1.setBounds(227, 282, 200, 14);
+		panel.add(lblNewLabel_17_5_1_1);
+		
+		JLabel lblNewLabel_17_5_1_2 = new JLabel("Diseño web, Redes II");
+		lblNewLabel_17_5_1_2.setBounds(227, 322, 200, 14);
+		panel.add(lblNewLabel_17_5_1_2);
+		
+		JLabel lblNewLabel_17_5_1_2_1 = new JLabel("Experiencia docente:  7 años");
+		lblNewLabel_17_5_1_2_1.setBounds(637, 276, 200, 14);
+		panel.add(lblNewLabel_17_5_1_2_1);
 	}
 	
 	public void crearAlumno(JFrame frame)
@@ -728,23 +940,24 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(180, 20, 1000, 700);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 255, 255));
+		contentPane.setBackground(Color.white);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel_18 = new JLabel("Control escolar");
-		lblNewLabel_18.setBounds(40, 30, 100, 14);
-		contentPane.add(lblNewLabel_18);
+		JLabel fondo = new JLabel();
+		fondo.setIcon(new ImageIcon(getClass().getResource("logoControl.png")));
+		fondo.setBounds(15, 15, 150, 60);
+		contentPane.add(fondo);
 		
 		JLabel lblNewLabel_18_1 = new JLabel("Añadir a un nuevo alumno");
-		lblNewLabel_18_1.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblNewLabel_18_1.setBounds(460, 25, 300, 25);
+		lblNewLabel_18_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 27));
+		lblNewLabel_18_1.setBounds(360, 40, 400, 25);
 		contentPane.add(lblNewLabel_18_1);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(0, 128, 0));
+		panel.setBackground(Color.decode("#A894C2"));
 		panel.setBounds(57, 90, 870, 530);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -755,10 +968,21 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		panel.add(lblNewLabel_19);
 		
 		JLabel lblNewLabel_20 = new JLabel("Nombre completo:           (Apellido paterno, apellido materno y nombre(s))");
-		lblNewLabel_20.setBounds(35, 75, 400, 14);
+		lblNewLabel_20.setBounds(35, 75, 450, 14);
 		panel.add(lblNewLabel_20);
 		
 		textField_10 = new JTextField();
+		textField_10.addKeyListener(new KeyAdapter()
+		{
+			public void keyTyped(KeyEvent e) //validar q solo ingrese letras
+			{
+				char character = e.getKeyChar();
+				if(!Character.isLetter(character))
+				{
+					e.consume();
+				}
+			}
+		});
 		textField_10.setBounds(35, 93, 550, 20);
 		panel.add(textField_10);
 		textField_10.setColumns(10);
@@ -927,23 +1151,24 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(180, 20, 1000, 700);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 255, 255));
+		contentPane.setBackground(Color.white);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel_18 = new JLabel("Control escolar");
-		lblNewLabel_18.setBounds(40, 30, 100, 14);
-		contentPane.add(lblNewLabel_18);
+		JLabel fondo = new JLabel();
+		fondo.setIcon(new ImageIcon(getClass().getResource("logoControl.png")));
+		fondo.setBounds(15, 15, 150, 60);
+		contentPane.add(fondo);
 		
 		JLabel lblNewLabel_18_1 = new JLabel("Añadir a un nuevo alumno");
-		lblNewLabel_18_1.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblNewLabel_18_1.setBounds(460, 25, 300, 25);
+		lblNewLabel_18_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 27));
+		lblNewLabel_18_1.setBounds(360, 40, 400, 25);
 		contentPane.add(lblNewLabel_18_1);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(0, 128, 0));
+		panel.setBackground(Color.decode("#A894C2"));
 		panel.setBounds(57, 90, 870, 530);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -975,19 +1200,19 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		panel.add(lblNewLabel_22_4);
 		
 		JRadioButton mom = new JRadioButton("Madre");
-		mom.setBounds(160, 210, 180, 30);
+		mom.setBounds(160, 210, 80, 30);
 		mom.setFont(new Font("Consolas", Font.BOLD, 12));
 		mom.setOpaque(false); 
 		panel.add(mom);
 		
 		JRadioButton dad = new JRadioButton("Padre");
-		dad.setBounds(260, 210, 180, 30);
+		dad.setBounds(260, 210, 80, 30);
 		dad.setFont(new Font("Consolas", Font.BOLD, 12));
 		dad.setOpaque(false); 
 		panel.add(dad);
 		
 		JRadioButton otro = new JRadioButton("Otro");
-		otro.setBounds(360, 210, 180, 30);
+		otro.setBounds(360, 210, 80, 30);
 		otro.setFont(new Font("Consolas", Font.BOLD, 12));
 		otro.setOpaque(false); 
 		panel.add(otro);
@@ -998,11 +1223,33 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		terms.add(otro);
 		
 		textField_16 = new JTextField();
+		textField_16.addKeyListener(new KeyAdapter()
+		{
+			public void keyTyped(KeyEvent e) //validar q solo ingrese letras
+			{
+				char character = e.getKeyChar();
+				if(!Character.isLetter(character))
+				{
+					e.consume();
+				}
+			}
+		});
 		textField_16.setBounds(160, 96, 300, 20);
 		panel.add(textField_16);
 		textField_16.setColumns(10);
 		
 		textField_17 = new JTextField();
+		textField_17.addKeyListener(new KeyAdapter()
+		{
+			public void keyTyped(KeyEvent e) //validar q solo ingrese numeros
+			{
+				char character = e.getKeyChar();
+				if(!Character.isDigit(character))
+				{
+					e.consume();
+				}
+			}
+		});
 		textField_17.setColumns(10);
 		textField_17.setBounds(160, 132, 300, 20);
 		panel.add(textField_17);
@@ -1018,7 +1265,7 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		
 		textField_19 = new JTextField();
 		textField_19.setColumns(10);
-		textField_19.setBounds(35, 280, 300, 20);
+		textField_19.setBounds(35, 280, 430, 90);
 		panel.add(textField_19);
 		
 		JButton btnNewButton_8 = new JButton("Finalizar");
@@ -1045,7 +1292,7 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 	
 	public void crearDocente(JFrame frame)
 	{
-		this.setTitle("School Smart Zone");
+		this.setTitle("NeoByte - Añadir nuevo Docente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(180, 20, 1000, 700);
 		contentPane = new JPanel();
@@ -1053,38 +1300,53 @@ public class ControlEscolar1 extends JFrame implements MouseListener{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-contentPane.setLayout(null);
+		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel_18 = new JLabel("Control escolar");
-		lblNewLabel_18.setBounds(40, 30, 100, 14);
-		contentPane.add(lblNewLabel_18);
+		JLabel fondo = new JLabel();
+		fondo.setIcon(new ImageIcon(getClass().getResource("logoControl.png")));
+		fondo.setBounds(15, 15, 150, 60);
+		contentPane.add(fondo);
 		
 		JLabel lblNewLabel_18_1 = new JLabel("Añadir a un nuevo docente");
-		lblNewLabel_18_1.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblNewLabel_18_1.setBounds(460, 25, 300, 25);
+		lblNewLabel_18_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 27));
+		lblNewLabel_18_1.setBounds(360, 40, 400, 25);
 		contentPane.add(lblNewLabel_18_1);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(0, 128, 0));
+		panel.setBackground(Color.decode("#322030"));
 		panel.setBounds(57, 90, 870, 530);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel_19 = new JLabel("Para añadir a un nuevo docente, rellene los siguientes datos con la información que corresponde:");
+		lblNewLabel_19.setForeground(new Color(255, 255, 255));
 		lblNewLabel_19.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_19.setBounds(35, 30, 700, 20);
 		panel.add(lblNewLabel_19);
 		
 		JLabel lblNewLabel_20 = new JLabel("Nombre completo:           (Apellido paterno, apellido materno y nombre(s))");
-		lblNewLabel_20.setBounds(35, 75, 400, 14);
+		lblNewLabel_20.setForeground(new Color(255, 255, 255));
+		lblNewLabel_20.setBounds(35, 75, 450, 14);
 		panel.add(lblNewLabel_20);
 		
 		textField_10 = new JTextField();
+		textField_10.addKeyListener(new KeyAdapter()
+		{
+			public void keyTyped(KeyEvent e) //validar q solo ingrese numeros
+			{
+				char character = e.getKeyChar();
+				if(!Character.isLetter(character))
+				{
+					e.consume();
+				}
+			}
+		});
 		textField_10.setBounds(35, 93, 550, 20);
 		panel.add(textField_10);
 		textField_10.setColumns(10);
 		
 		JLabel lblNewLabel_20_1 = new JLabel("Fecha de nacimiento:\r\n");
+		lblNewLabel_20_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_20_1.setBounds(35, 124, 400, 14);
 		panel.add(lblNewLabel_20_1);
 		
@@ -1094,6 +1356,7 @@ contentPane.setLayout(null);
 		panel.add(textField_11);
 		
 		JLabel lblNewLabel_20_1_1 = new JLabel("CURP:");
+		lblNewLabel_20_1_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_20_1_1.setBounds(35, 173, 400, 14);
 		panel.add(lblNewLabel_20_1_1);
 		
@@ -1103,6 +1366,7 @@ contentPane.setLayout(null);
 		panel.add(textField_12);
 		
 		JLabel lblNewLabel_20_1_1_1 = new JLabel("Correo electrónico:");
+		lblNewLabel_20_1_1_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_20_1_1_1.setBounds(35, 220, 400, 14);
 		panel.add(lblNewLabel_20_1_1_1);
 		
@@ -1112,6 +1376,7 @@ contentPane.setLayout(null);
 		panel.add(textField_13);
 		
 		JLabel lblNewLabel_20_1_1_1_1 = new JLabel("Número de teléfono (personal):");
+		lblNewLabel_20_1_1_1_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_20_1_1_1_1.setBounds(35, 266, 400, 14);
 		panel.add(lblNewLabel_20_1_1_1_1);
 		
@@ -1132,6 +1397,7 @@ contentPane.setLayout(null);
 		panel.add(textField_14);
 		
 		JLabel lblNewLabel_20_1_1_1_1_1 = new JLabel("Nacionalidad");
+		lblNewLabel_20_1_1_1_1_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_20_1_1_1_1_1.setBounds(35, 314, 100, 14);
 		panel.add(lblNewLabel_20_1_1_1_1_1);
 		
@@ -1142,6 +1408,7 @@ contentPane.setLayout(null);
 		panel.add(nacionalidadBox);	
 		
 		JLabel lblNewLabel_20_1_1_1_1_1_1 = new JLabel("Tipo de sangre");
+		lblNewLabel_20_1_1_1_1_1_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_20_1_1_1_1_1_1.setBounds(185, 314, 100, 14);
 		panel.add(lblNewLabel_20_1_1_1_1_1_1);
 		
@@ -1152,6 +1419,7 @@ contentPane.setLayout(null);
 		panel.add(sangreBox);	
 		
 		JLabel lblNewLabel_20_1_1_1_1_1_1_1 = new JLabel("Estado civil");
+		lblNewLabel_20_1_1_1_1_1_1_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_20_1_1_1_1_1_1_1.setBounds(335, 314, 100, 14);
 		panel.add(lblNewLabel_20_1_1_1_1_1_1_1);
 		
@@ -1170,6 +1438,7 @@ contentPane.setLayout(null);
 		panel_1.add(lblNewLabel_21);
 		
 		JLabel lblNewLabel_20_1_1_1_1_1_1_1_1 = new JLabel("Género");
+		lblNewLabel_20_1_1_1_1_1_1_1_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_20_1_1_1_1_1_1_1_1.setBounds(480, 314, 100, 14);
 		panel.add(lblNewLabel_20_1_1_1_1_1_1_1_1);
 		
@@ -1180,25 +1449,30 @@ contentPane.setLayout(null);
 		panel.add(generoBox);
 		
 		JLabel lblNewLabel_20_1_1_1_1_1_2 = new JLabel("Idiomas:");
+		lblNewLabel_20_1_1_1_1_1_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_20_1_1_1_1_1_2.setBounds(35, 370, 100, 14);
 		panel.add(lblNewLabel_20_1_1_1_1_1_2);
 		
 		JCheckBox itemBox1 = new JCheckBox("Inglés");
+		itemBox1.setForeground(new Color(255, 255, 255));
 		itemBox1.setBounds(36, 385, 80, 30);
 		itemBox1.setOpaque(false); 
 		panel.add(itemBox1);
 		
 		JCheckBox itemBox2 = new JCheckBox("Francés");
+		itemBox2.setForeground(new Color(255, 255, 255));
 		itemBox2.setBounds(120, 385, 80, 30);
 		itemBox2.setOpaque(false); 
 		panel.add(itemBox2);
 		
 		JCheckBox itemBox3 = new JCheckBox("Portugués");
+		itemBox3.setForeground(new Color(255, 255, 255));
 		itemBox3.setBounds(220, 385, 120, 30);
 		itemBox3.setOpaque(false); 
 		panel.add(itemBox3);
 		
 		JLabel lblNewLabel_20_1_1_1_1_1_2_1 = new JLabel("Comentarios adicionales:");
+		lblNewLabel_20_1_1_1_1_1_2_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_20_1_1_1_1_1_2_1.setBounds(35, 426, 300, 14);
 		panel.add(lblNewLabel_20_1_1_1_1_1_2_1);
 		
@@ -1273,8 +1547,8 @@ contentPane.setLayout(null);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel_15 = new JLabel("Información general del alumno");
-		lblNewLabel_15.setBounds(37, 38, 160, 14);
+		JLabel lblNewLabel_15 = new JLabel("Nombre del alumno que desea consultar:");
+		lblNewLabel_15.setBounds(37, 38, 200, 14);
 		panel.add(lblNewLabel_15);
 		
 		JLabel lblNewLabel_15_1 = new JLabel("Apellido paterno:");
@@ -1402,6 +1676,11 @@ contentPane.setLayout(null);
 		estadoCivil.setFont(new Font("Consolas", Font.BOLD, 12));
 		estadoCivil.setBounds(435, 394, 100, 20);
 		panel.add(estadoCivil);
+		
+		textField_28 = new JTextField();
+		textField_28.setBounds(262, 35, 400, 20);
+		panel.add(textField_28);
+		textField_28.setColumns(10);
 		
 	}
 
